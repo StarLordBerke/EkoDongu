@@ -7,7 +7,7 @@
 [![Web Audio API](https://img.shields.io/badge/Audio-Web_Audio_API-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 [![Zero Waste](https://img.shields.io/badge/Theme-Zero_Waste-10b981.svg)](#)
 
-> **EkoDöngü**, çevre bilincini ve geri dönüşüm kültürünü eğlenceli, dinamik ve eğitici bir oyun deneyimiyle sunan **2D HTML5 Canvas web oyunudur**. Oyuncular gökyüzünden süzülen evsel ve endüstriyel atıkları doğru geri dönüşüm kutularına fırlatarak veya sürükleyip bırakarak doğayı kurtarır, kombolar yapar ve 10 farklı seviyede yıldızlar toplayarak Sıfır Atık Şampiyonu olur!
+> **EkoDöngü**, çevre bilincini ve geri dönüşüm kültürünü eğlenceli, dinamik ve eğitici bir oyun deneyimiyle sunan **2D HTML5 Canvas web oyunudur**. Oyuncular gökyüzünden süzülen evsel ve endüstriyel atıkları doğru geri dönüşüm kutularına fırlatarak veya sürükleyip bırakarak doğayı kurtarır, kombolar yapar ve 100 farklı seviyede yıldızlar toplayarak Sıfır Atık Şampiyonu olur!
 
 ---
 
