@@ -1,0 +1,6 @@
+{
+  "name": "EkoDöngü - Sıfır Atık 2D Web Oyunu",
+  "description": "Sıfır Atık (Zero Waste) temalı, HTML5 Canvas tabanlı 2D geri dönüşüm ve çevre eğitim oyunu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

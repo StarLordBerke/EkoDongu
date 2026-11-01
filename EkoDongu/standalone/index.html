@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EkoDöngü - Sıfır Atık 2D Web Oyunu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Oyun Konteynırı -->
+  <div id="game-container">
+    <!-- 2D Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Üst Arayüz (HUD) -->
+    <header id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="score-pill">
+          <span class="label">SKOR</span>
+          <span id="scoreDisplay" class="value">0</span>
+        </div>
+        <div class="level-pill">
+          <span class="label">SEVİYE</span>
+          <span id="levelDisplay" class="value">1</span>
+        </div>
+      </div>
+
+      <div class="hud-center">
+        <!-- İlerleme Çubuğu -->
+        <div class="progress-bar-container">
+          <div id="levelProgress" class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <div id="comboBanner" class="combo-badge hidden">2x KOMBO!</div>
+      </div>
+
+      <div class="hud-right">
+        <!-- Can Kalpleri -->
+        <div id="livesContainer" class="lives-box">
+          <span class="heart active">❤️</span>
+          <span class="heart active">❤️</span>
+          <span class="heart active">❤️</span>
+        </div>
+        <button id="hudMusicBtn" class="icon-btn" title="Müziği Aç/Kapat">🎵</button>
+        <button id="hudMuteBtn" class="icon-btn" title="Efekt Sesi Aç/Kapat">🔊</button>
+        <button id="pauseBtn" class="icon-btn" title="Duraklat">⏸️</button>
+      </div>
+    </header>
+
+    <!-- Bildirim ve Eğitim Mesajı -->
+    <div id="toastMessage" class="toast hidden"></div>
+
+    <!-- Başlangıç Ekranı (Start Screen) -->
+    <div id="startScreen" class="overlay active">
+      <div class="menu-card">
+        <div class="logo-badge">🌱</div>
+        <h1 class="game-title">Eko<span>Döngü</span></h1>
+        <p class="subtitle">Sıfır Atık & Geri Dönüşüm 2D Web Oyunu</p>
+
+        <div id="highScoreBadge" class="high-score-badge hidden">
+          🏆 En Yüksek Skor: <span id="highScoreVal">0</span>
+        </div>
+
+        <div class="bins-preview">
+          <div class="bin-tag blue">📄 Kağıt</div>
+          <div class="bin-tag yellow">🧴 Plastik</div>
+          <div class="bin-tag green">🍾 Cam</div>
+          <div class="bin-tag brown">🍎 Organik</div>
+          <div class="bin-tag gray">🥫 Metal</div>
+          <div class="bin-tag red">🔋 Pil</div>
+          <div class="bin-tag purple">💻 E-Atık</div>
+        </div>
+
+        <div class="difficulty-select">
+          <label>Zorluk Seçimi:</label>
+          <div class="diff-buttons">
+            <button class="diff-btn" data-diff="KOLAY">🌱 Kolay</button>
+            <button class="diff-btn active" data-diff="NORMAL">⚡ Normal</button>
+            <button class="diff-btn" data-diff="ZOR">🔥 Zor</button>
+          </div>
+        </div>
+
+        <button id="startBtn" class="primary-btn">🎮 Oyuna Başla</button>
+        <button id="howToPlayBtn" class="secondary-btn">❓ Nasıl Oynanır?</button>
+        
+        <div class="audio-toggle-row">
+          <button id="startMusicBtn" class="text-btn">🎵 Müzik: Açık</button>
+          <span style="color: rgba(255,255,255,0.4); margin: 0 4px;">•</span>
+          <button id="startMuteBtn" class="text-btn">🔊 Efektler: Açık</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nasıl Oynanır Modalı -->
+    <div id="helpModal" class="overlay hidden">
+      <div class="menu-card help-card">
+        <h2>Nasıl Oynanır?</h2>
+        <p class="help-desc">Yukarıdan düşen atıkları farenizle veya parmağınızla tutarak en alttaki doğru renkteki geri dönüşüm kutusuna sürükleyip bırakın.</p>
+        <ul class="rules-list">
+          <li><strong>Mavi Kutu:</strong> Kağıt, Karton, Gazete, Kitap</li>
+          <li><strong>Sarı Kutu:</strong> Plastik Şişe, Deterjan Kutusu, Naylon</li>
+          <li><strong>Yeşil Kutu:</strong> Cam Şişe, Kavanoz, Cam Bardak</li>
+          <li><strong>Kahverengi Kutu:</strong> Meyve kabukları, Çay, Organik gıda</li>
+        </ul>
+        <p class="tip">💡 Her doğru atık +100 puan ve kombo çarpanı kazandırır. Yanlış kutulama veya yere düşen atık can kaybettirir!</p>
+        <button id="closeHelpBtn" class="primary-btn">Tamam, Hazırım!</button>
+      </div>
+    </div>
+
+    <!-- Oyun Bitti Ekranı (Game Over Screen) -->
+    <div id="gameOverScreen" class="overlay hidden">
+      <div class="menu-card game-over-card">
+        <h2>Oyun Bitti!</h2>
+        <p class="summary-text">Doğayı korumak için harika bir mücadele verdin!</p>
+
+        <div class="final-score-box">
+          <span class="lbl">TOPLAM SKOR</span>
+          <span id="finalScore" class="val">0</span>
+          <div id="newRecordNotice" class="record-text hidden">🎉 YENİ REKOR!</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item"><span class="t">Seviye</span><span id="statLevel">1</span></div>
+          <div class="stat-item"><span class="t">Doğruluk</span><span id="statAccuracy">%100</span></div>
+          <div class="stat-item"><span class="t">Ayrıştırılan</span><span id="statCount">0</span></div>
+        </div>
+
+        <!-- Sıfır Atık Eğitici Mesaj -->
+        <div class="eco-fact-box">
+          <strong>🌿 Sıfır Atık Bilgisi:</strong>
+          <p id="ecoFactText">1 ton kağıt geri dönüştürüldüğünde 17 yetişkin ağaç kesilmekten kurtulur!</p>
+        </div>
+
+        <div class="btn-group">
+          <button id="restartBtn" class="primary-btn">🔄 Tekrar Oyna</button>
+          <button id="homeBtn" class="secondary-btn">🏠 Ana Menü</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ses Dosyaları (Kendi MP3/WAV dosyalarınız için yer tutucular) -->
+  <audio id="bgmAudio" src="assets/bgm.mp3" loop preload="auto"></audio>
+  <audio id="successAudio" src="assets/success.wav" preload="auto"></audio>
+  <audio id="errorAudio" src="assets/error.wav" preload="auto"></audio>
+  <audio id="gameoverAudio" src="assets/gameover.wav" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

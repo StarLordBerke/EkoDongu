@@ -1,0 +1,390 @@
+/* EkoDöngü: Sıfır Atık Web Oyunu - Modern Stil Dosyası */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #064e3b;
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #065f46 0%, #0f172a 100%);
+}
+
+#gameCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* Üst Başlık (HUD) */
+#hud {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.hud-left, .hud-right, .hud-center {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-pill, .level-pill {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.score-pill .label, .level-pill .label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #a7f3d0;
+  letter-spacing: 0.5px;
+}
+
+.score-pill .value {
+  font-size: 18px;
+  font-weight: 900;
+  color: #34d399;
+}
+
+.level-pill .value {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fbbf24;
+}
+
+.progress-bar-container {
+  width: 140px;
+  height: 10px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  transition: width 0.3s ease;
+}
+
+.combo-badge {
+  background: #f59e0b;
+  color: #451a03;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+.lives-box {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: flex;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.heart {
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.heart.lost {
+  opacity: 0.2;
+  transform: scale(0.8);
+}
+
+.icon-btn {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(15, 23, 42, 0.95);
+  transform: scale(1.05);
+}
+
+/* Toast Bildirim */
+.toast {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  border: 1px solid #10b981;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 30;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+/* Overlay & Modallar */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  padding: 16px;
+}
+
+.menu-card {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 28px;
+  padding: 32px 28px;
+  max-width: 440px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.logo-badge {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.game-title {
+  font-size: 38px;
+  font-weight: 900;
+  color: white;
+}
+
+.game-title span {
+  color: #34d399;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.bins-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 16px 0;
+}
+
+.bin-tag {
+  padding: 8px 4px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+}
+
+.bin-tag.blue { background: #2563eb; }
+.bin-tag.yellow { background: #ca8a04; }
+.bin-tag.green { background: #16a34a; }
+.bin-tag.brown { background: #854d0e; }
+.bin-tag.gray { background: #64748b; }
+.bin-tag.red { background: #dc2626; }
+.bin-tag.purple { background: #7c3aed; }
+
+.difficulty-select {
+  margin: 16px 0;
+}
+
+.difficulty-select label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.diff-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 4px;
+  border-radius: 14px;
+}
+
+.diff-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.diff-btn.active {
+  background: #10b981;
+  color: #064e3b;
+}
+
+.primary-btn, .secondary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  color: #022c22;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.audio-toggle-row {
+  margin-top: 14px;
+}
+
+.text-btn {
+  background: transparent;
+  border: none;
+  color: #a7f3d0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Game Over İstatistikleri */
+.final-score-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #34d399;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.final-score-box .lbl {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 800;
+}
+
+.final-score-box .val {
+  display: block;
+  font-size: 38px;
+  font-weight: 900;
+  color: #34d399;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  background: rgba(15, 23, 42, 0.5);
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-item .t {
+  display: block;
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.stat-item span:last-child {
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+}
+
+.eco-fact-box {
+  background: rgba(6, 78, 59, 0.4);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: left;
+  font-size: 12px;
+  color: #e2e8f0;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
