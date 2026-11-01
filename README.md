@@ -15,7 +15,7 @@
 
 Oyunu tarayıcınızda doğrudan hemen oynamak için aşağıdaki bağlantıya tıklayın:
 
-👉 **[EkoDöngü Canlı Oyunu Başlat (Tıklayın)](https://ais-pre-wum6okfqvguiwnjhdfh7p3-524291745461.europe-west3.run.app)**  
+👉 **[EkoDöngü Canlı Oyunu Başlat (Tıklayın)](https://eko-dongu-one.vercel.app/)**  
 *(Kendi alan adınıza veya sunucunuza yayınladığınızda bağlantıyı bu alandan güncelleyebilirsiniz.)*
 
 ---
@@ -92,7 +92,7 @@ Oyunda uluslararası sıfır atık standartlarına uygun **7 farklı atık tür�
 
 ---
 
-## 🗺️ 10 Seviyeli Macera Haritası & Sonsuz Mod
+## 🗺️ 100 Seviyeli Macera Haritası & Sonsuz Mod
 
 ### Seviye Haritası Özellikleri:
 1. **Dikey Yol (Spine) & Kart Ayrımı:** Seviye kartları ile ortadaki yol çizgisi asla üst üste binmez; kartlar yolun sağına ve soluna şık bağlantı köprüleriyle konumlandırılmıştır.
@@ -111,7 +111,13 @@ Oyunda uluslararası sıfır atık standartlarına uygun **7 farklı atık tür�
 * **Seviye 7: Eko Metropol** (Kağıt, Plastik, Cam, Metal, Pil)
 * **Seviye 8: Akıllı Bilişim Şehri** (Elektronik, Pil, Metal, Cam, Plastik)
 * **Seviye 9: Eko Yörünge İstasyonu** (Pil, Elektronik, Metal, Cam)
-* **Seviye 10: Sıfır Atık Gezegen Zirvesi** (Tüm 7 Kategori Aktif Final!)
+* .
+* .
+* .
+* .
+* .
+* .
+* **Seviye 100: Sıfır Atık Gezegen Zirvesi** (Tüm 7 Kategori Aktif Final!)
 
 ### ⚡ Hızlı Oyun (Sonsuz Mod):
 * **Tüm 7 Atık Türü ve 7 Kutu** aynı anda devrededir.
