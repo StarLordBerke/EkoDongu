@@ -25,15 +25,18 @@ Oyunu tarayıcınızda doğrudan hemen oynamak için aşağıdaki bağlantıya t
 *Aşağıdaki alanlara oyunun ekran görüntülerini ekleyebilirsiniz:*
 
 ### 1. Ana Giriş Menüsü & 7 Kategori Önizleme
-![Giriş Menüsü](public/assets/aistudio/Screenshot_3_772f6d8f.jpg)
+<a href=""><img align="center" src="https://github.com/StarLordBerke/EkoDongu/blob/main/img/Oyun%20Ekran%C4%B1.png"/></a>
+
 *Zorluk seçimi (Kolay / Normal / Zor), ses/müzik kontrolleri ve 7 geri dönüşüm kutusu.*
 
-### 2. Seviye Haritası (10 Aşamalı Yolculuk & Scroll Bar)
-![Seviye Haritası](public/assets/aistudio/Screenshot_5_b2c5e27e.jpg)
-*10 farklı bölge, 30 yıldız ilerlemesi, özel yeşil kaydırma çubuğu ve yeni açılan seviyeye otomatik yumuşak kayma (`smooth scroll`).*
+### 2. Seviye Haritası (100 Aşamalı Yolculuk & Scroll Bar)
+<a href=""><img align="center" src="https://github.com/StarLordBerke/EkoDongu/blob/main/img/Seviye%20Haritas%C4%B1.png"/></a>
+
+*100 farklı bölge, 300 yıldız ilerlemesi, özel yeşil kaydırma çubuğu ve yeni açılan seviyeye otomatik yumuşak kayma (`smooth scroll`).*
 
 ### 3. Oyun İçi Oynanış (Canvas Game Loop & HUD)
-![Oyun İçi Görüntü](public/assets/aistudio/Screenshot_2_415f1b49.jpg)
+<a href=""><img align="center" src="https://github.com/StarLordBerke/EkoDongu/blob/main/img/Oyun.png"/></a>
+
 *Atıkların havada süzülmesi, dinamik geri dönüşüm kutuları, kombo çarpanı ve eğitici bilgi balonları.*
 
 ---
