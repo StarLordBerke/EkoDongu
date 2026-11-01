@@ -111,12 +111,12 @@ Oyunda uluslararası sıfır atık standartlarına uygun **7 farklı atık tür�
 * **Seviye 7: Eko Metropol** (Kağıt, Plastik, Cam, Metal, Pil)
 * **Seviye 8: Akıllı Bilişim Şehri** (Elektronik, Pil, Metal, Cam, Plastik)
 * **Seviye 9: Eko Yörünge İstasyonu** (Pil, Elektronik, Metal, Cam)
-* .
-* .
-* .
-* .
-* .
-* .
+* 
+* 
+* 
+* 
+* 
+* 
 * **Seviye 100: Sıfır Atık Gezegen Zirvesi** (Tüm 7 Kategori Aktif Final!)
 
 ### ⚡ Hızlı Oyun (Sonsuz Mod):
